@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Basic meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Algo AI — Insights, Tools & News on AI & Technology</title>
+  <meta name="description" content="Algo AI — Curated articles, tools, and tutorials about artificial intelligence, machine learning, and modern developer tools." />
+  <meta name="keywords" content="AI, artificial intelligence, machine learning, deep learning, technology, AI tools, tutorials, data science" />
+  <meta name="author" content="Algo AI" />
+  <link rel="canonical" href="https://example.com/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Algo AI" />
+  <meta property="og:title" content="Algo AI — Insights & Tools for Artificial Intelligence" />
+  <meta property="og:description" content="Curated articles, tools, and tutorials about AI & Technology." />
+  <meta property="og:url" content="https://example.com/" />
+  <meta property="og:image" content="https://example.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@algo_ai" />
+  <meta name="twitter:title" content="Algo AI — Insights & Tools for Artificial Intelligence" />
+  <meta name="twitter:description" content="Curated articles, tools, and tutorials about AI & Technology." />
+  <meta name="twitter:image" content="https://example.com/og-image.png" />
+
+  <!-- SEO / Crawling -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Structured data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Algo AI",
+    "url": "https://example.com/",
+    "description": "Curated articles, tools, and tutorials about AI & Technology.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Algo AI"
+    }
+  }
+  </script>
+
+  <!-- Minimal, fast system fonts (no external requests) -->
+  <style>
+    /* CSS Reset (light, modern) */
+    :root {
+      --bg: #0f1724;
+      --surface: #0b1220;
+      --muted: #94a3b8;
+      --text: #e6eef8;
+      --accent: #6ee7b7;
+      --accent-2: #60a5fa;
+      --glass: rgba(255,255,255,0.04);
+      --radius: 12px;
+      --max-width: 1100px;
+      --shadow: 0 6px 18px rgba(2,6,23,0.6);
+      --transition: 240ms cubic-bezier(.2,.9,.3,1);
+    }
+
+    /* Light theme overrides */
+    :root[data-theme="light"]{
+      --bg: #f7fbff;
+      --surface: #ffffff;
+      --muted: #475569;
+      --text: #0b1220;
+      --accent: #0f766e;
+      --accent-2: #1d4ed8;
+      --glass: rgba(2,6,23,0.03);
+      --shadow: 0 6px 20px rgba(2,6,23,0.08);
+    }
+
+    /* Respect user's OS preference */
+    @media (prefers-color-scheme: light){
+      :root { /* base is dark, override if user prefers light */
+        --bg: #f7fbff;
+        --surface: #ffffff;
+        --muted: #475569;
+        --text: #0b1220;
+        --accent: #0f766e;
+        --accent-2: #1d4ed8;
+        --glass: rgba(2,6,23,0.03);
+        --shadow: 0 6px 20px rgba(2,6,23,0.08);
+      }
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      min-height:100%;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,var(--bg), color-mix(in srgb, var(--bg) 92%, var(--surface)));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      -webkit-tap-highlight-color: transparent;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    /* Layout */
+    .container{max-width:var(--max-width);margin:0 auto;padding:clamp(20px,4vw,36px)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:12px;z-index:30}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-0.01em}
+    .logo {
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;place-items:center;color:var(--surface);font-weight:800;font-size:16px;
+      box-shadow:var(--shadow);
+    }
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px;border-radius:8px;font-weight:600;font-size:15px}
+    nav a:hover, nav a:focus{color:var(--text);background:var(--glass);outline:none;transform:translateY(-1px)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:48px 0}
+    .hero-inner{display:flex;flex-direction:column;gap:18px}
+    h1{font-size:clamp(28px,5vw,44px);margin:0;line-height:1.05}
+    p.lead{margin:0;color:var(--muted);font-size:1.05rem;max-width:70ch}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:var(--surface);padding:10px 16px;border-radius:10px;border:none;font-weight:700;cursor:pointer;
+      box-shadow: 0 6px 18px rgba(10, 20, 40, 0.35); transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .btn.secondary{
+      background:transparent;color:var(--text);border:1px solid color-mix(in srgb,var(--text) 12%, transparent);backdrop-filter: blur(4px);
+    }
+    .btn:active{transform:translateY(1px)}
+
+    /* Card grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:var(--surface);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);overflow:hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    .card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(2,6,23,0.5)}
+    .card h3{margin:0 0 8px;font-size:1.05rem}
+    .meta{color:var(--muted);font-size:0.9rem}
+
+    /* Tools / features */
+    .features{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:12px}
+    .feature{display:flex;gap:12px;align-items:flex-start}
+
+    /* Article list */
+    .articles{display:flex;flex-direction:column;gap:12px}
+
+    /* Newsletter */
+    .newsletter{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+    .input{
+      flex:1;min-width:220px;padding:10px 12px;border-radius:10px;border:1px solid color-mix(in srgb,var(--text) 6%, transparent);
+      background:transparent;color:var(--text)
+    }
+
+    /* Footer */
+    footer{margin-top:36px;padding:24px 0;color:var(--muted);font-size:0.92rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .features{grid-template-columns:1fr}
+    }
+    @media (max-width: 620px){
+      header{gap:8px}
+      .grid{grid-template-columns:1fr}
+      .hero{padding:28px 0}
+      .hero{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    /* Reveal-on-scroll animation */
+    .reveal {opacity:0;transform:translateY(18px) scale(0.995);transition: opacity 560ms ease, transform 560ms cubic-bezier(.2,.9,.3,1)}
+    .reveal.visible {opacity:1;transform:none}
+
+    /* Micro-interactions & focus */
+    :focus{outline: 3px solid color-mix(in srgb,var(--accent) 18%, transparent);outline-offset: 3px;border-radius: 8px}
+    /* keyboard only focus styling improvement */
+    :focus:not(:focus-visible){outline:none}
+
+    /* small utility */
+    .muted{color:var(--muted)}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{padding:6px 10px;border-radius:999px;background:var(--glass);font-weight:600;color:var(--muted)}
+
+    /* subtle animated background blob */
+    .hero-visual{
+      width:100%;height:280px;border-radius:18px;background:
+      radial-gradient(600px 300px at 10% 20%, color-mix(in srgb,var(--accent) 18%, transparent), transparent 12%),
+      radial-gradient(500px 200px at 90% 80%, color-mix(in srgb,var(--accent-2) 14%, transparent), transparent 10%),
+      linear-gradient(180deg, transparent, rgba(0,0,0,0.03));
+      position:relative;overflow:hidden;padding:18px;display:flex;align-items:center;justify-content:center;
+    }
+    .device-mock{
+      width:82%;max-width:640px;height:190px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+      display:grid;place-items:center;border:1px solid rgba(255,255,255,0.03)
+    }
+    /* tiny code block */
+    pre.code-sample{background:rgba(0,0,0,0.06);padding:10px;border-radius:8px;color:var(--text);overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="reveal" role="banner" aria-label="Top header">
+      <div class="brand" title="Algo AI">
+        <div class="logo" aria-hidden="true">AI</div>
+        <div>
+          <div style="font-size:0.95rem">Algo AI</div>
+          <div style="font-size:0.78rem;color:var(--muted)">Insights • Tools • Tutorials</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#articles">Articles</a>
+        <a href="#tools">Tools</a>
+        <a href="#newsletter">Subscribe</a>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:8px">
+        <button id="theme-toggle" class="btn secondary" aria-pressed="false" aria-label="Toggle dark or light theme">Toggle Theme</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="reveal" style="--delay:0ms">
+          <h1 id="hero-title">AI & Technology — Tools, Guides, and Practical Tutorials</h1>
+          <p class="lead">We write practical articles, build useful tools, and explain complex AI concepts clearly — for developers, data scientists, and curious makers.</p>
+        </div>
+
+        <div class="reveal cta-row" style="--delay:60ms">
+          <button class="btn" onclick="document.getElementById('newsletter').scrollIntoView({behavior:'smooth'})">Get the newsletter</button>
+          <a class="btn secondary" href="#articles">Latest articles</a>
+        </div>
+
+        <!-- micro chips -->
+        <div class="reveal chips" style="--delay:120ms">
+          <span class="chip">Machine Learning</span>
+          <span class="chip">Prompt Engineering</span>
+          <span class="chip">Tools & APIs</span>
+          <span class="chip">Ethics & Policy</span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true" style="--delay:0ms">
+        <div class="device-mock">
+          <!-- simple illustrative SVG (inline, no external load) -->
+          <svg width="88%" viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI visualization">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#6EE7B7"/><stop offset="1" stop-color="#60A5FA"/>
+              </linearGradient>
+            </defs>
+            <rect x="4" y="6" rx="6" ry="6" width="132" height="68" fill="url(#g1)" opacity="0.08"/>
+            <g fill="none" stroke="currentColor" stroke-opacity="0.18" stroke-width="0.8">
+              <circle cx="40" cy="36" r="6" />
+              <circle cx="65" cy="24" r="3.5" />
+              <circle cx="95" cy="44" r="5.5" />
+              <path d="M44 40 C56 50, 76 42, 90 36" />
+            </g>
+            <text x="12" y="20" fill="currentColor" opacity="0.6" font-size="6" font-weight="600">Algo AI — Live Demos</text>
+            <rect x="10" y="28" rx="2" ry="2" width="68" height="6" fill="currentColor" opacity="0.06"/>
+            <rect x="10" y="36" rx="2" ry="2" width="84" height="22" fill="currentColor" opacity="0.03"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES / CARDS -->
+    <section id="features" aria-labelledby="features-title" style="margin-top:18px">
+      <h2 id="features-title" class="reveal">What we offer</h2>
+      <div class="grid" style="margin-top:12px">
+        <article class="card reveal" aria-labelledby="c1">
+          <h3 id="c1">Practical Tutorials</h3>
+          <p class="meta">Step-by-step hands-on guides for production-ready AI.</p>
+          <p class="muted">From model serving, observability, MLOps to prompt design — clear, code-first examples that ship.</p>
+        </article>
+
+        <article class="card reveal" aria-labelledby="c2">
+          <h3 id="c2">Tools & Widgets</h3>
+          <p class="meta">Free tools & playgrounds to test prompts, embeddings, and pipelines.</p>
+          <p class="muted">Small utilities: tokenizer inspector, prompt templater, model comparator.</p>
+        </article>
+
+        <article class="card reveal" aria-labelledby="c3">
+          <h3 id="c3">Expert Articles</h3>
+          <p class="meta">In-depth explanations by practitioners.</p>
+          <p class="muted">Interpretable ML, responsible AI, and industry trends explained with clarity.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Tools & Mini Code sample -->
+    <section id="tools" style="margin-top:28px">
+      <h2 class="reveal">Quick tool: Token estimator</h2>
+      <div class="reveal" style="margin-top:12px;display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+        <div style="min-width:260px;flex:1" class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Estimate tokens from text</strong>
+            <small class="muted">Approximation</small>
+          </div>
+          <textarea id="token-input" rows="5" placeholder="Paste some text..." style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text)"></textarea>
+          <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+            <button class="btn" id="estimate-btn">Estimate</button>
+            <div id="token-output" class="muted">Tokens: 0 • Approx. cost: $0.00</div>
+          </div>
+        </div>
+
+        <div class="card" style="max-width:480px">
+          <pre class="code-sample" aria-hidden="true">
+// very small token estimator (approx)
+// tokens ≈ words * 1.33 (approx for typical English)
+function estimateTokens(text){
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.round(words * 1.33);
+}
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles -->
+    <section id="articles" style="margin-top:28px">
+      <h2 class="reveal">Latest articles</h2>
+      <div class="articles" style="margin-top:12px">
+        <article class="card reveal">
+          <h3>How to build a cost-efficient API for LLMs</h3>
+          <p class="meta">Nov 12, 2025 • 8 min read</p>
+          <p class="muted">Best-practices for batching, caching, and model selection to reduce inference cost without hurting UX.</p>
+        </article>
+
+        <article class="card reveal">
+          <h3>Prompt engineering patterns for multi-turn assistants</h3>
+          <p class="meta">Oct 29, 2025 • 6 min read</p>
+          <p class="muted">Pattern library for guardrails, persona, and retrieval-augmented generation.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" style="margin-top:28px">
+      <h2 class="reveal">Stay in the loop</h2>
+      <div class="newsletter reveal" style="margin-top:12px">
+        <div style="flex:1;min-width:160px">
+          <strong>Get a weekly digest of the best AI tools & articles.</strong>
+          <div class="muted" style="font-size:0.92rem">No spam. Unsubscribe anytime.</div>
+        </div>
+        <form id="newsletter-form" style="display:flex;gap:8px;flex:1;min-width:260px" onsubmit="event.preventDefault(); subscribe();">
+          <input id="email" required type="email" placeholder="you@company.com" class="input" aria-label="Email address" />
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      <div>© <span id="year"></span> Algo AI — Built with ❤️</div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <a class="muted" href="/privacy">Privacy</a>
+        <a class="muted" href="/terms">Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts: theme toggle, reveal-on-scroll, small token estimator, newsletter demo -->
+  <script>
+    // Utilities
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => document.querySelectorAll(s);
+
+    // Persisted theme: check localStorage first, else check OS preference
+    (function initTheme(){
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      const stored = localStorage.getItem('theme'); // 'light' or 'dark'
+      if(stored){
+        root.setAttribute('data-theme', stored);
+        btn.setAttribute('aria-pressed', stored === 'light' ? 'true' : 'false');
+      } else {
+        // prefer light/dark based on system
+        const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        if(prefersLight) root.setAttribute('data-theme', 'light');
+      }
+
+      btn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        const next = current === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        btn.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+      });
+    })();
+
+    // Reveal on scroll using IntersectionObserver
+    (function revealOnScroll(){
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.12});
+      document.querySelectorAll('.reveal').forEach((el, i) => {
+        // optional staged delay via inline style variable --delay
+        const delay = el.style.getPropertyValue('--delay') || (i * 40) + 'ms';
+        el.style.transitionDelay = delay;
+        observer.observe(el);
+      });
+    })();
+
+    // Token estimator (very small approximation)
+    document.getElementById('estimate-btn').addEventListener('click', () => {
+      const txt = document.getElementById('token-input').value || '';
+      const words = txt.trim() ? txt.trim().split(/\s+/).length : 0;
+      const tokens = Math.max(0, Math.round(words * 1.33));
+      const costPer1K = 0.02; // example placeholder $0.02 / 1k tokens
+      const cost = (tokens / 1000 * costPer1K).toFixed(4);
+      document.getElementById('token-output').textContent = `Tokens: ${tokens} • Approx. cost: $${cost}`;
+    });
+
+    // newsletter demo (non-functional stub)
+    function subscribe(){
+      const email = document.getElementById('email').value;
+      if(!email) return alert('Please enter a valid email');
+      // In production: POST to your newsletter API
+      alert('Thanks! ' + email + ' — check your inbox (demo).');
+      document.getElementById('newsletter-form').reset();
+    }
+
+    // small accessibility: set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // keyboard shortcut: "t" toggles theme (small accessibility feature)
+    window.addEventListener('keydown', (e) => {
+      if(e.key.toLowerCase() === 't' && !e.ctrlKey && !e.metaKey && !e.altKey){
+        document.getElementById('theme-toggle').click();
+      }
+    });
+  </script>
+</body>
+</html>
